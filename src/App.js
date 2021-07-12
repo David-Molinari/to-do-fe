@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import Nav from './components/Nav';
 import Auth from './components/Auth';
 import ToDo from './components/ToDo';
-import Footer from './components/Footer';
 import axios from 'axios';
 
 function App() {
   const[userId, setUserId] = useState(-1)
   const[username, setUsername] = useState('')
   const[initialTasks, setInitialTasks] = useState([])
+  const[loggedIn, setLoggedIn] = useState(false)
 
   useEffect(()=> {
     const localToken = window.localStorage.getItem('todo-token')
@@ -37,9 +36,32 @@ function App() {
     }
   }, [])
 
+  useEffect(()=> {
+    if (username != undefined && username != 'loggedOut') {
+        setLoggedIn(true)
+    } else {
+      setLoggedIn(false)
+    }
+  }, [username])
+
+  const logout = () => {
+    axios.defaults.headers.common['Authorization'] = ''
+    window.localStorage.setItem('todo-token', '')
+    document.title = 'To-Do'
+    setUserId(-1)
+    setInitialTasks([])
+    setUsername('loggedOut')
+  }
+
   return (
     <div className="App">
-      <Nav/>
+      <div id='Nav'>
+          <h1 id='Title'
+              onClick={()=> window.location.reload()}
+          >
+              To-Do
+          </h1>
+      </div>
       {username.length > 0 && username !== 'loggedOut' ? 
         <ToDo 
           userId={userId} 
@@ -55,12 +77,15 @@ function App() {
       :
         <h5 id="AppLoading">Loading...</h5>
       }
-      <Footer 
-        userId={userId}
-        setUserId={setUserId}
-        setUsername={setUsername}
-        setInitialTasks={setInitialTasks}
-        />
+      <div id='Footer'>
+          {loggedIn === true ?
+              <div id='Logout'
+                  onClick={()=> logout()}> 
+                  Logout
+              </div>
+          : ''
+          }
+      </div>
     </div>
   );
 }

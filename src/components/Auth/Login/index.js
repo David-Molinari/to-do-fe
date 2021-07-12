@@ -16,6 +16,7 @@ export default function Login(props) {
     const attemptLogin = (e) => {
         e.preventDefault()
         setAttemptingLogin(true)
+        console.log(attemptingLogin)
         axios
         .post(`${process.env.REACT_APP_API_URL}/users/check-auth`, loginInput)
         .then((response)=> {
@@ -30,17 +31,21 @@ export default function Login(props) {
                 props.setUserId(response.data.userId)
                 document.title = `${response.data.username}'s to-do`
                 props.setUsername(response.data.username)
+                setAttemptingLogin(false)
             } else {
+                setAttemptingLogin(false)
                 alert('Log in attempt failed')
             }
         })
-        .catch(()=> alert('Failed to log in'))
-        setAttemptingLogin(false)
+        .catch(()=> {
+            setAttemptingLogin(false)
+            alert('Failed to log in')
+        })
     }
 
     return (
         <div id='Login'>
-            <h5>Log In</h5>
+            <h2>Log In</h2>
             <form id='LoginForm'
                 onSubmit={(e)=> attemptLogin(e)}
             >
@@ -70,7 +75,7 @@ export default function Login(props) {
                 <div id='AttemptingLogin'
                     className={!attemptingLogin ? 'Hide' : ''}    
                 >
-                    Attemptin log in
+                    Attempting log in
                 </div>
             </form>
         </div>

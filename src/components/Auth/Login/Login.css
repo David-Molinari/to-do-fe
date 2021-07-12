@@ -1,0 +1,16 @@
+#LoginForm {
+    display: flex;
+    flex-direction: column;
+}
+input {
+    margin-bottom: 7px;
+}
+#ViewToggler {
+    margin-top: 1em;
+    font-size: 1rem;
+    font-style: italic;
+    cursor: pointer;
+}
+.Hide {
+    display: none;
+}

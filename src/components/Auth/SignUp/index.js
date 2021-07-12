@@ -31,20 +31,21 @@ export default function SignUp(props) {
                 props.setUserId(response.data.userId)
                 document.title = `${response.data.username}'s to-do`
                 props.setUsername(response.data.username)
+                setAttemptingSignup(false)
             } else {
+                setAttemptingSignup(false)
                 alert('Sign up attempt failed. Username may not be available.')
             }
         })
         .catch((err)=> {
-            console.log(err)
+            setAttemptingSignup(false)
             alert('Failed to sign up')
         })
-        setAttemptingSignup(false)
     }
 
     return (
         <div id='SignUp'>
-            <h5>Sign Up</h5>
+            <h2>Sign Up</h2>
             <form id='SignupForm'
                 onSubmit={(e)=> attemptSignup(e)}
             >

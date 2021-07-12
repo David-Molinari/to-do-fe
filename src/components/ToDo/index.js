@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './ToDo.css';
 import axios from 'axios';
+import { AiOutlineDelete } from 'react-icons/ai';
 
 export default function ToDo(props) {
     const[tasks, setTasks] = useState(props.initialTasks)
@@ -8,6 +9,9 @@ export default function ToDo(props) {
     const[addingTask, setAddingTask] = useState(false)
 
     const handleChange = (e) => {
+        if (e.target.value.length > 25) {
+            return
+        }
         setTaskInput(e.target.value)
     }
     
@@ -34,7 +38,7 @@ export default function ToDo(props) {
         setAddingTask(true)
         let duplicate = false
         for (let i = 0; i < tasks.length; i++) {
-            if (tasks[i].task === taskInput) {
+            if (tasks[i] === taskInput) {
                 duplicate = true
             }
         }
@@ -59,7 +63,7 @@ export default function ToDo(props) {
 
     return (
         <div id='ToDo'>
-            <h3 id='ListUser'>{props.username}</h3>
+            <h2 id='ListUser'>{props.username}</h2>
             <div id='TasksList'>
                 {tasks.map((e)=> {
                     return (
@@ -68,10 +72,10 @@ export default function ToDo(props) {
                                 {e}
                             </div>
                             <div 
-                                className='DeleteX'
+                                className='Delete'
                                 onClick={()=> deleteTask(e)}
                             >
-                                X
+                                <AiOutlineDelete/>
                             </div>
                         </div>
                     )
