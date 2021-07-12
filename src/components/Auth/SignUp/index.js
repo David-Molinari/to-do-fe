@@ -1,5 +1,82 @@
+import { useState } from 'react'
 import './SignUp.css';
+import axios from 'axios';
 
-export default function SignUp() {
 
+export default function SignUp(props) {
+    const[signupInput, setSignupInput] = useState({
+        username: '',
+        password: ''
+    })
+    const[attemptingSignup, setAttemptingSignup] = useState(false)
+
+    const handleChange = (e) => {
+        setSignupInput({...signupInput, [e.target.name]: e.target.value})
+    }
+
+    const attemptSignup = (e) => {
+        e.preventDefault()
+        setAttemptingSignup(true)
+        axios
+        .post(`${process.env.REACT_APP_API_URL}/users/add-user`, signupInput)
+        .then((response)=> {
+            if (response.data.auth === true) {
+                let tasksAdj = []
+                for (let i = 0; i < response.data.tasks.length; i++) {
+                    tasksAdj.push(response.data.tasks[i].Task)
+                }
+                axios.defaults.headers.common['Authorization'] = response.data.token
+                window.localStorage.setItem('todo-token', response.data.token)
+                props.setInitialTasks(tasksAdj)
+                props.setUserId(response.data.userId)
+                document.title = `${response.data.username}'s to-do`
+                props.setUsername(response.data.username)
+            } else {
+                alert('Sign up attempt failed. Username may not be available.')
+            }
+        })
+        .catch((err)=> {
+            console.log(err)
+            alert('Failed to sign up')
+        })
+        setAttemptingSignup(false)
+    }
+
+    return (
+        <div id='SignUp'>
+            <h5>Sign Up</h5>
+            <form id='SignupForm'
+                onSubmit={(e)=> attemptSignup(e)}
+            >
+                <input id='SignupUsername'
+                    type='username'
+                    name='username'
+                    placeholder='Enter username'
+                    value={signupInput.username}
+                    onChange={(e)=> handleChange(e)}
+                />
+                <input id='SignupPassword'
+                    type='password'
+                    name='password'
+                    placeholder='Enter password'
+                    value={signupInput.password}
+                    onChange={(e)=> handleChange(e)}
+                />
+                <button id='SignupButton'
+                    className={attemptingSignup ? 'Hide' : ''}
+                    disabled={
+                        signupInput.username === '' ||
+                        signupInput.password === ''
+                    }
+                >
+                    Sign Up
+                </button>
+                <div id='AttemptingSignup'
+                    className={!attemptingSignup ? 'Hide' : ''}    
+                >
+                    Attempting sign up
+                </div>
+            </form>
+        </div>
+    )
 }
