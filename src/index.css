@@ -22,7 +22,16 @@ input {
 input ::placeholder {
   color: hsla(15, 0%, 0%, 0.5) !important;
 }
-* > ::placeholder {
+::-webkit-input-placeholder {
+  color: hsla(15, 0%, 0%, 0.5) !important;
+}
+::-moz-placeholder {
+  color: hsla(15, 0%, 0%, 0.5) !important;
+}
+:-ms-input-placeholder {
+  color: hsla(15, 0%, 0%, 0.5) !important;
+}
+:-moz-placeholder {
   color: hsla(15, 0%, 0%, 0.5) !important;
 }
 input :focus, :focus-visible, :focus-within {
