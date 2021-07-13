@@ -19,7 +19,7 @@ input {
   color: black !important;
   border-color: hsla(15, 0%, 0%, 0.15) !important;
 }
-input :placeholder {
+input ::placeholder {
   color: hsla(15, 0%, 0%, 0.5) !important;
 }
 input :focus, :focus-visible, :focus-within {
