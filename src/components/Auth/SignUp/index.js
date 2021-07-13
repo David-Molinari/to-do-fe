@@ -23,6 +23,7 @@ export default function SignUp(props) {
         axios
         .post(`${process.env.REACT_APP_API_URL}/users/add-user`, signupInput)
         .then((response)=> {
+            console.log(response)
             if (response.data.auth === true) {
                 let tasksAdj = []
                 for (let i = 0; i < response.data.tasks.length; i++) {
