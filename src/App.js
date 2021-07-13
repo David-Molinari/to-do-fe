@@ -77,7 +77,7 @@ function App() {
             <h1 id='Title'
                 onClick={()=> window.location.reload()}
             >
-                To-Do:
+                To-Do
             </h1>
           </div>
           <Auth 
