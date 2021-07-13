@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './ToDo.css';
 import axios from 'axios';
-import { AiOutlineDelete } from 'react-icons/ai';
+import { AiOutlineRightSquare, AiOutlineDelete } from 'react-icons/ai';
 import Loader from "react-loader-spinner";
 
 export default function ToDo(props) {
@@ -72,6 +72,7 @@ export default function ToDo(props) {
                 {tasks.map((e)=> {
                     return (
                         <div className='TaskContainer' key={`task${e}`}>
+                            <AiOutlineRightSquare className='TaskSquare'/>
                             <div className='Task'>
                                 {e}
                             </div>

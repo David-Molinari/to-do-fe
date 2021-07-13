@@ -7,6 +7,9 @@
     display: flex;
     max-width: 250px;
 }
+.TaskSquare {
+    margin: 1px 5px 0 0;
+}
 .Task {
     margin-bottom: 15px;
 }
