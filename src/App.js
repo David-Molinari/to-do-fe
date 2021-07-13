@@ -3,6 +3,7 @@ import './App.css';
 import Auth from './components/Auth';
 import ToDo from './components/ToDo';
 import axios from 'axios';
+import Loader from "react-loader-spinner";
 
 function App() {
   const[userId, setUserId] = useState(-1)
@@ -87,7 +88,16 @@ function App() {
           />
         </>
       :
-        <h5 id="AppLoading">loading...</h5>
+      <div id="AppLoadingCont"
+        >
+        <Loader id='AppLoading'
+            type='ThreeDots'
+            color='#000000'
+            height={25}
+            width={25}
+            timeout={500}
+        />
+      </div>
       }
       <div id='Footer'>
           {loggedIn === true ?

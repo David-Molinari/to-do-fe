@@ -28,3 +28,6 @@ button {
   font-style: italic;
   cursor: pointer;
 }
+#AppLoadingCont {
+  margin-top: 25vh;
+}
