@@ -16,7 +16,6 @@ export default function Login(props) {
     const attemptLogin = (e) => {
         e.preventDefault()
         setAttemptingLogin(true)
-        console.log(attemptingLogin)
         axios
         .post(`${process.env.REACT_APP_API_URL}/users/check-auth`, loginInput)
         .then((response)=> {
