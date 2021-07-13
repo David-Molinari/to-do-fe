@@ -1,5 +1,6 @@
 #LoginTitle {
     font-size: 1.25rem;
+    margin-top: .5em;
 }
 #LoginForm {
     display: flex;
