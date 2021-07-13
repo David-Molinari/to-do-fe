@@ -74,7 +74,7 @@ function App() {
       : username === 'loggedOut' ?
         <>
           <div id="Nav">
-            <h1 id='Title'
+            <h1 id='Title1'
                 onClick={()=> window.location.reload()}
             >
                 To-Do

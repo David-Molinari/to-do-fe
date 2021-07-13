@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './SignUp.css';
 import axios from 'axios';
 
-
 export default function SignUp(props) {
     const[signupInput, setSignupInput] = useState({
         username: '',
