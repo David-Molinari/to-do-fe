@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Login.css';
 import axios from 'axios';
+import Loader from "react-loader-spinner";
 
 export default function Login(props) {
     const[loginInput, setLoginInput] = useState({
@@ -71,11 +72,13 @@ export default function Login(props) {
                 >
                     log In
                 </button>
-                <div id='AttemptingLogin'
-                    className={!attemptingLogin ? 'Hide' : ''}    
-                >
-                    attempting log in
-                </div>
+                <Loader id='AttemptingLogin'
+                    className={!attemptingLogin ? 'Hide' : ''} 
+                    type='Circles'
+                    color='#000000'
+                    height={25}
+                    width={25}
+                />
             </form>
         </div>
     )

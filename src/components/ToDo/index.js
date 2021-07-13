@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './ToDo.css';
 import axios from 'axios';
 import { AiOutlineDelete } from 'react-icons/ai';
+import Loader from "react-loader-spinner";
 
 export default function ToDo(props) {
     const[tasks, setTasks] = useState(props.initialTasks)
@@ -35,7 +36,7 @@ export default function ToDo(props) {
 
     const addTask = (e) => {
         e.preventDefault()
-        setAddingTask(true)
+        // setAddingTask(true)
         let duplicate = false
         for (let i = 0; i < tasks.length; i++) {
             if (tasks[i] === taskInput) {
@@ -53,12 +54,16 @@ export default function ToDo(props) {
                 newTasks.push(taskInput)
                 setTasks(newTasks)
                 setTaskInput('')
+                // setAddingTask(false)
             })
-            .catch(()=> alert('Failed to add task'))
+            .catch(()=> {
+                // setAddingTask(false)
+                alert('Failed to add task')
+            })
         } else {
+            // setAddingTask(false)
             alert('Task is a duplicate')
         }
-        setAddingTask(false)
     }
 
     return (
@@ -96,11 +101,13 @@ export default function ToDo(props) {
                     >
                         add task
                     </button>
-                    <div id='AddingTask'
-                        className={!addingTask ? 'Hide' : ''}    
-                    >
-                        adding task
-                    </div>
+                    <Loader id='AddingTask'
+                        className={!addingTask ? 'Hide' : ''} 
+                        type='Circles'
+                        color='#000000'
+                        height={25}
+                        width={25}
+                    />
                 </form>
             </div>
         </div>
