@@ -4,19 +4,19 @@ import SignUp from './SignUp';
 import LogIn from './Login';
 
 export default function Auth(props) {
-    const[view, setView] = useState('Sign Up')
+    const[view, setView] = useState('sign up')
 
     const toggleView = () => {
-        if (view === 'Sign Up') {
-            setView('Log In')
+        if (view === 'sign up') {
+            setView('log in')
         } else {
-            setView('Sign Up')
+            setView('sign up')
         }
     }
 
     return (
         <div id='Auth'>
-            {view === 'Log In' ?
+            {view === 'log in' ?
                 <SignUp 
                     setUserId={props.setUserId} 
                     setUsername={props.setUsername} 

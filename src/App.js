@@ -55,33 +55,45 @@ function App() {
 
   return (
     <div className="App">
-      <div id='Nav'>
-          <h1 id='Title'
-              onClick={()=> window.location.reload()}
-          >
-              To-Do
-          </h1>
-      </div>
-      {username.length > 0 && username !== 'loggedOut' ? 
-        <ToDo 
-          userId={userId} 
-          username={username} 
-          initialTasks={initialTasks}
-        />
+      {username.length > 0 && username !== 'loggedOut' ?
+        <>
+          <div id="Nav">
+            <h1 id='ListUser'>{username}'s</h1>
+            <h1 id='Title'
+                onClick={()=> window.location.reload()}
+            >
+                to-do:
+            </h1>
+          </div>
+          <ToDo 
+            userId={userId} 
+            username={username} 
+            initialTasks={initialTasks}
+          />
+        </>
       : username === 'loggedOut' ?
-        <Auth 
-          setUserId={setUserId} 
-          setUsername={setUsername} 
-          setInitialTasks={setInitialTasks}
-        />
+        <>
+          <div id="Nav">
+            <h1 id='Title'
+                onClick={()=> window.location.reload()}
+            >
+                To-Do:
+            </h1>
+          </div>
+          <Auth 
+            setUserId={setUserId} 
+            setUsername={setUsername} 
+            setInitialTasks={setInitialTasks}
+          />
+        </>
       :
-        <h5 id="AppLoading">Loading...</h5>
+        <h5 id="AppLoading">loading...</h5>
       }
       <div id='Footer'>
           {loggedIn === true ?
               <div id='Logout'
                   onClick={()=> logout()}> 
-                  Logout
+                  log out
               </div>
           : ''
           }

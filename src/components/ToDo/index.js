@@ -63,7 +63,6 @@ export default function ToDo(props) {
 
     return (
         <div id='ToDo'>
-            <h2 id='ListUser'>{props.username}</h2>
             <div id='TasksList'>
                 {tasks.map((e)=> {
                     return (
@@ -87,7 +86,7 @@ export default function ToDo(props) {
                 >
                     <input id='AddTaskInput'
                         type='textarea'
-                        placeholder='Enter task'
+                        placeholder='enter task'
                         value={taskInput}
                         onChange={(e)=> handleChange(e)}
                     />
@@ -95,12 +94,12 @@ export default function ToDo(props) {
                         className={addingTask ? 'Hide' : ''}
                         disabled={taskInput === ''}    
                     >
-                        Add task
+                        add task
                     </button>
                     <div id='AddingTask'
                         className={!addingTask ? 'Hide' : ''}    
                     >
-                        Adding task
+                        adding task
                     </div>
                 </form>
             </div>

@@ -1,15 +1,26 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #Title {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+#Nav {
+  display: flex;
+}
+#ListUser {
+  font-size: 1.5rem;
+  padding-right: 5px;
+}
+button {
   cursor: pointer;
 }
 #Logout {
   margin-top: 1em;
   font-size: 1rem;
   font-style: italic;
-  cursor: pointer;
-}
-button {
   cursor: pointer;
 }

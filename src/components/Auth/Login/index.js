@@ -45,21 +45,21 @@ export default function Login(props) {
 
     return (
         <div id='Login'>
-            <h2>Log In</h2>
+            <h2 id='LoginTitle'>Log In</h2>
             <form id='LoginForm'
                 onSubmit={(e)=> attemptLogin(e)}
             >
                 <input id='LoginUsername'
                     type='username'
                     name='username'
-                    placeholder='Enter username'
+                    placeholder='enter username'
                     value={loginInput.username}
                     onChange={(e)=> handleChange(e)}
                 />
                 <input id='LoginPassword'
                     type='password'
                     name='password'
-                    placeholder='Enter password'
+                    placeholder='enter password'
                     value={loginInput.password}
                     onChange={(e)=> handleChange(e)}
                 />
@@ -70,12 +70,12 @@ export default function Login(props) {
                         loginInput.password === ''
                     }
                 >
-                    Log In
+                    log In
                 </button>
                 <div id='AttemptingLogin'
                     className={!attemptingLogin ? 'Hide' : ''}    
                 >
-                    Attempting log in
+                    attempting log in
                 </div>
             </form>
         </div>

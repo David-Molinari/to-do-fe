@@ -11,6 +11,9 @@ export default function SignUp(props) {
     const[attemptingSignup, setAttemptingSignup] = useState(false)
 
     const handleChange = (e) => {
+        if (e.target.name == 'username' && e.target.value.length > 7) {
+            return
+        }
         setSignupInput({...signupInput, [e.target.name]: e.target.value})
     }
 
@@ -45,21 +48,21 @@ export default function SignUp(props) {
 
     return (
         <div id='SignUp'>
-            <h2>Sign Up</h2>
+            <h2 id='SignupTitle'>Sign Up</h2>
             <form id='SignupForm'
                 onSubmit={(e)=> attemptSignup(e)}
             >
                 <input id='SignupUsername'
                     type='username'
                     name='username'
-                    placeholder='Enter username'
+                    placeholder='enter username'
                     value={signupInput.username}
                     onChange={(e)=> handleChange(e)}
                 />
                 <input id='SignupPassword'
                     type='password'
                     name='password'
-                    placeholder='Enter password'
+                    placeholder='enter password'
                     value={signupInput.password}
                     onChange={(e)=> handleChange(e)}
                 />
@@ -70,12 +73,12 @@ export default function SignUp(props) {
                         signupInput.password === ''
                     }
                 >
-                    Sign Up
+                    sign up
                 </button>
                 <div id='AttemptingSignup'
                     className={!attemptingSignup ? 'Hide' : ''}    
                 >
-                    Attempting sign up
+                    attempting sign up
                 </div>
             </form>
         </div>

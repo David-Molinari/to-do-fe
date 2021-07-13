@@ -1,3 +1,6 @@
+#LoginTitle {
+    font-size: 1.25rem;
+}
 #LoginForm {
     display: flex;
     flex-direction: column;
