@@ -14,3 +14,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+input :focus, :focus-visible, :focus-within {
+  outline-color: grey !important;
+}
