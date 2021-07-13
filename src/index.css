@@ -14,6 +14,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+input {
+  background-color: hsla(14, 0%, 0%, 0.00005) !important;
+  border-radius: 5px !important;
+  color: black !important;
+  border-color: hsla(15, 0%, 0%, 0.15) !important;
+}
+input :placeholder {
+  color: hsla(15, 0%, 0%, 0.5) !important;
+}
 input :focus, :focus-visible, :focus-within {
-  outline-color: grey !important;
+  outline-color: hsla(15, 0%, 0%, 0.5) !important;
+}
+button {
+  cursor: pointer !important;
+  background-color: hsla(15, 0%, 0%, 0.15) !important;
+  color: black !important;
+  border-radius: 5px !important;
+  border-color: hsla(15, 0%, 0%, 0.5) !important;
+}
+button:disabled {
+  color: hsla(15, 0%, 0%, 0.5) !important;
+  background-color: hsla(15, 0%, 0%, 0.05) !important;
+  border-color: hsla(15, 0%, 0%, 0.15) !important;
 }
